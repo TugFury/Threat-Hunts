@@ -32,6 +32,10 @@ This repo serves as:
     <li>Detailed attack chain analysis</li>
     <li>MITRE ATT&CK mapping</li>
     <li>All relevant KQL queries</li>
-    <li>Indicators of Compromise (IOCs)<li>
+    <li>Indicators of Compromise (IOCs)</li>
     <li>Timeline & evidence screenshots</li>
 </ul>
+
+Completed Threat Hunts
+<a href="https://github.com/TugFury/Threat-Hunts/tree/main/Azuki-RDP-Intrusion-2025">Port of Entry</a>
+<a href="#">Cargo Hold</a>
