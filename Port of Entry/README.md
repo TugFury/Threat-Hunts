@@ -253,10 +253,11 @@ A suspicious executable named mm.exe was downloaded into the attacker’s stagin
 🚩 Flag 12 - mm.exe
 
 <h3>Flag 13: CREDENTIAL ACCESS - Memory Extraction Module</h3>
+
 Credential dumping tools use specific modules to extract passwords from security subsystems. Documenting the exact technique used aids in detection engineering.
 
 
-Analysis of the command line for the credential dumping tool (mm.exe) shows it invoked the Mimikatz memory extraction module sekurlsa::logonpasswords, which is used to retrieve usernames and plaintext passwords, NTLM hashes, Kerberos tickets, and other authentication material directly from.
+Analysis of the command line for the credential dumping tool (mm.exe) shows it invoked the Mimikatz memory extraction module sekurlsa::logonpasswords, which is used to retrieve usernames and plaintext passwords, NTLM hashes, Kerberos tickets, and other authentication material directly from LSASS memory.
 
 Resource used: <a href="https://github.com/gentilkiwi/mimikatz/wiki">Mimikatz</a>
 
