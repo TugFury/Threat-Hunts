@@ -392,6 +392,8 @@ Near the end of the intrusion, the attacker attempted to laterally move to 10.1.
 🚩 Flag 20 - mstsc.exe
 
 
+
+
 <h2>Summary of Findings</h2>
 
 | Flag # | Category                  | Finding                                   |
@@ -416,3 +418,41 @@ Near the end of the intrusion, the attacker attempted to laterally move to 10.1.
 | 18     | Malicious Script          | `wupdate.ps1`                             |
 | 19     | Lateral Movement Target   | `10.1.0.188`                              |
 | 20     | Lateral Movement Tool     | `mstsc.exe`                               |
+
+
+
+<h2>MITRE Summary by Tactic</h2>
+
+<h3>Execution</h3>
+T1059.001 – PowerShell execution via malicious script (wupdate.ps1).
+
+<h3>Discovery</h3>
+T1016 – Network configuration discovery via arp -a.
+T1083 – File and directory discovery within staging areas.
+T1057 – Process discovery during reconnaissance.
+
+<h3>Defense Evasion</h3>
+T1562.001 – Security tool modification through Defender exclusions.
+T1036.004 – Masquerading via hidden/system attributes (WindowsCache).
+
+<h3>Credential Access</h3>
+T1003.001 – Credential dumping from LSASS using sekurlsa::logonpasswords.
+
+<h3>Persistence</h3>
+T1053.005 – Scheduled task persistence (“Windows Update Check”).
+
+<h3>Lateral Movement</h3>
+T1021.001 – RDP-based lateral movement via mstsc.exe.
+T1550.002 – Using stored credentials with cmdkey for remote access.
+
+<h3>Collection</h3>
+T1560.001 – Data staged via ZIP archive (export-data.zip).
+
+<h3>Command & Control</h3>
+T1071.001 – C2 communication over HTTPS to 78.141.196.6:443.
+
+<h3>Exfiltration</h3>
+T1567.002 – Exfiltration to cloud service via Discord webhook.
+
+<h3>Impact / Anti-Forensics</h3>
+T1070.001 – Event log clearing using wevtutil.exe.
