@@ -137,5 +137,8 @@ DeviceRegistryEvents <br>
 
 <img width="1240" height="168" alt="image" src="https://github.com/user-attachments/assets/80240e9f-789b-49bc-8819-67ef77f18113" />
 
+Further investigation revealed that the attacker added the Temp directory (C:\Users\KENJI~1.SAT\AppData\Local\Temp) as a Defender exclusion. This allowed any malicious files placed or executed in this location to bypass antivirus scanning and remain undetected.
+
 🚩 Flag 6 - C:\Users\KENJI~1.SAT\AppData\Local\Temp
 
+<h3>Flag 7: DEFENCE EVASION - Download Utility Abuse</h3>
