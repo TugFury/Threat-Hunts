@@ -154,8 +154,46 @@ DeviceProcessEvents <br>
 | project Timestamp, FileName, ProcessCommandLine <br>
 | order by Timestamp asc <br>
 
-During analysis, I identified that certutil.exe—a legitimate Windows utility—was executed from the suspicious WindowsCache directory to download external files. 
+During analysis, I identified that certutil.exe a legitimate Windows utility was executed from the suspicious WindowsCache directory to download external files. 
 
-<img width="1222" height="115" alt="image" src="https://github.com/user-attachments/assets/a1f4463f-c0d2-4047-9398-d36db86efe4f" />
+<img width="1240" height="115" alt="image" src="https://github.com/user-attachments/assets/a1f4463f-c0d2-4047-9398-d36db86efe4f" />
 
 🚩 Flag 7 - certutil.exe
+
+<h3>Flag 8: PERSISTENCE - Scheduled Task Name</h3>
+
+Scheduled tasks provide reliable persistence across system reboots. The task name often attempts to blend with legitimate Windows maintenance routines.
+
+<h3>KQL Query:</h3>
+
+DeviceProcessEvents <br>
+| where DeviceName == "azuki-sl" <br>
+| where Timestamp between (datetime(2025-11-19) .. datetime(2025-11-20)) <br>
+| where FileName =~ "schtasks.exe" <br>
+| project Timestamp, FileName, ProcessCommandLine, AccountName <br>
+| order by Timestamp asc <br>
+
+After running a query on scheduled task creation events, I identified two entries showing the attacker configuring a task named “Windows Update Check”, pointing to the malicious payload in C:\ProgramData\WindowsCache\. This confirms the use of scheduled tasks for persistence.
+
+<img width="1240" height="92" alt="image" src="https://github.com/user-attachments/assets/290efd50-96f8-458a-95d2-bee4c7fff76e" />
+
+🚩 Flag 8 - Windows Update Check
+
+<h3>Flag 9: PERSISTENCE - Scheduled Task Target</h3>
+
+The scheduled task action defines what executes at runtime. This reveals the exact persistence mechanism and the malware location.
+
+<h3>KQL Query:</h3>
+
+DeviceProcessEvents <br>
+| where DeviceName == "azuki-sl" <br>
+| where Timestamp between (datetime(2025-11-19) .. datetime(2025-11-20)) <br>
+| where FileName =~ "schtasks.exe" <br>
+| where ProcessCommandLine has "Windows Update Check" <br>
+| project Timestamp, ProcessCommandLine <br>
+
+Although named after the legitimate Windows system process svchost.exe, this file was placed in a non-standard directory C:\ProgramData\WindowsCache and therefore represents a malicious persistence payload.
+
+<img width="1240" height="137" alt="image" src="https://github.com/user-attachments/assets/305e4244-0cd3-4041-b8b4-a13240ede16b" />
+
+🚩 Flag 9 - C:\ProgramData\WindowsCache\svchost.exe
