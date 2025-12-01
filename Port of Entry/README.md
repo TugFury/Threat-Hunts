@@ -389,4 +389,4 @@ Built-in remote access tools are preferred for lateral movement as they blend wi
 
 Near the end of the intrusion, the attacker attempted to laterally move to 10.1.0.188 using the built-in Windows RDP client mstsc.exe.
 
-🚩 Flag 19 - mstsc.exe
+🚩 Flag 20 - mstsc.exe
