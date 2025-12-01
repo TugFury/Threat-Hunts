@@ -41,9 +41,12 @@ Flag 1 Initial Access
 Remote Desktop Protocol connections leave network traces that identify the source of unauthorised access. Determining the origin helps with threat actor attribution and blocking ongoing attacks.
 
 KQL Query:
-DeviceLogonEvents
+DeviceLogonEvents 
 | where DeviceName == "azuki-sl"
 | where Timestamp between (datetime(2025-11-19) .. datetime(2025-11-20))
 | project Timestamp, DeviceName, AccountName, LogonType, ActionType, RemoteIP, RemoteDeviceName
 | order by Timestamp asc
+
+
+<img width="1243" height="440" alt="Flag 1 Return" src="https://github.com/user-attachments/assets/da03a46f-6398-42ea-ac45-97c3a16ca7b9" />
 
