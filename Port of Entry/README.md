@@ -142,3 +142,5 @@ Further investigation revealed that the attacker added the Temp directory (C:\Us
 🚩 Flag 6 - C:\Users\KENJI~1.SAT\AppData\Local\Temp
 
 <h3>Flag 7: DEFENCE EVASION - Download Utility Abuse</h3>
+
+Legitimate system utilities are often weaponized to download malware while evading detection. Identifying these techniques helps improve defensive controls.
