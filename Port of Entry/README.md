@@ -69,3 +69,5 @@ The external IP authenticated using the kenji.sato account, confirming it as the
 
 
 <h3>Flag 3: DISCOVERY - Network Reconnaissance</h3>
+
+Attackers enumerate network topology to identify lateral movement opportunities and high-value targets. This reconnaissance activity is a key indicator of advanced persistent threats.
