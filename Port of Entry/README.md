@@ -82,3 +82,7 @@ DeviceProcessEvents <br>
 
 <img width="1243" height="146" alt="image" src="https://github.com/user-attachments/assets/e8287092-2c02-4eeb-8094-855e788694c5" />
 
+The attacker executed arp -a, indicating an attempt to enumerate local network hosts and their associated MAC addresses.
+
+🚩 Flag 3 - arp -a
+
