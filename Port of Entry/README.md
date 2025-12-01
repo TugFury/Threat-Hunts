@@ -144,3 +144,18 @@ Further investigation revealed that the attacker added the Temp directory (C:\Us
 <h3>Flag 7: DEFENCE EVASION - Download Utility Abuse</h3>
 
 Legitimate system utilities are often weaponized to download malware while evading detection. Identifying these techniques helps improve defensive controls.
+
+<h3>KQL Query:</h3>
+
+DeviceProcessEvents <br>
+| where DeviceName == "azuki-sl" <br>
+| where Timestamp between (datetime(2025-11-19) .. datetime(2025-11-20)) <br>
+| where ProcessCommandLine has_any ("http", "https") <br>
+| project Timestamp, FileName, ProcessCommandLine <br>
+| order by Timestamp asc <br>
+
+During analysis, I identified that certutil.exe—a legitimate Windows utility—was executed from the suspicious WindowsCache directory to download external files. 
+
+<img width="1222" height="115" alt="image" src="https://github.com/user-attachments/assets/a1f4463f-c0d2-4047-9398-d36db86efe4f" />
+
+🚩 Flag 7 - certutil.exe
