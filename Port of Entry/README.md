@@ -104,3 +104,18 @@ DeviceProcessEvents <br>
 The query revealed that attrib.exe was used to apply hidden and system attributes to the directory, effectively concealing it and making it appear like a legitimate system folder.
 
 🚩 Flag 4 - C:\ProgramData\WindowsCache
+
+<h3>Flag 5: DEFENCE EVASION - File Extension Exclusions</h3>
+
+Attackers add file extension exclusions to Windows Defender to prevent scanning of malicious files. Counting these exclusions reveals the scope of the attacker's defense evasion strategy.
+
+<h3>KQL Query:</h3>
+
+DeviceRegistryEvents <br>
+| where DeviceName == "azuki-sl" <br>
+| where Timestamp between (datetime(2025-11-19) .. datetime(2025-11-20)) <br>
+| where RegistryKey has @"Windows Defender\Exclusions\Extensions" <br>
+| project Timestamp, RegistryValueName, RegistryValueData, ActionType <br>
+| order by Timestamp asc <br>
+
+<img width="1241" height="139" alt="image" src="https://github.com/user-attachments/assets/ecbb8a66-9239-4eb8-a6c7-cbf89633df7f" />
