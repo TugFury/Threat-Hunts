@@ -58,3 +58,8 @@ The query results showed a suspicious sequence of a LogonFailure followed by a s
 
 
 <h3>Flag 2: INITIAL ACCESS - Compromised User Account</h3>
+
+Identifying which credentials were compromised determines the scope of unauthorised access and guides remediation efforts including password resets and privilege reviews.
+
+<img width="1243" height="201" alt="image" src="https://github.com/user-attachments/assets/faded648-398d-4784-b43f-692011aaa51e" />
+
