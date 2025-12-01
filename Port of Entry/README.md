@@ -90,4 +90,15 @@ The attacker executed arp -a, indicating an attempt to enumerate local network h
 
 Attackers establish staging locations to organise tools and stolen data. Identifying these directories reveals the scope of compromise and helps locate additional malicious artefacts.
 
+<h3>KQL Query:</h3>
 
+DeviceProcessEvents <br>
+| where DeviceName == "azuki-sl" <br>
+| where Timestamp between (datetime(2025-11-19) .. datetime(2025-11-20)) <br>
+| where ProcessCommandLine has_any ("mkdir", "md ", "New-Item", "attrib") <br>
+| project Timestamp, FileName, ProcessCommandLine, AccountName <br>
+| order by Timestamp asc <br>
+
+<img width="1243" height="180" alt="image" src="https://github.com/user-attachments/assets/fe8704cc-0ee7-4da6-b1b8-23562ba5045e" />
+
+🚩 Flag 4 - C:\ProgramData\WindowsCache
