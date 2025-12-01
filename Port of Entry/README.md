@@ -54,4 +54,7 @@ DeviceLogonEvents <br>
 
 The query results showed a suspicious sequence of a LogonFailure followed by a successful logon from the external IP address 88.97.178.12.
 
-Flag 1 - 88.97.178.12
+🚩 Flag 1 - 88.97.178.12
+
+
+<h3>Flag 2: INITIAL ACCESS - Compromised User Account</h3>
