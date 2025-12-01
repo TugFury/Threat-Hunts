@@ -101,4 +101,6 @@ DeviceProcessEvents <br>
 
 <img width="1243" height="180" alt="image" src="https://github.com/user-attachments/assets/fe8704cc-0ee7-4da6-b1b8-23562ba5045e" />
 
+The query revealed that attrib.exe was used to apply hidden and system attributes to the directory, effectively concealing it and making it appear like a legitimate system folder.
+
 🚩 Flag 4 - C:\ProgramData\WindowsCache
