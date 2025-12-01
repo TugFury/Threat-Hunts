@@ -228,4 +228,10 @@ DeviceNetworkEvents <br>
 | where RemoteIP == "78.141.196.6" <br> 
 | project Timestamp, RemoteIP, RemotePort, InitiatingProcessFileName, InitiatingProcessCommandLine <br> 
 | order by Timestamp asc <br> 
- 
+
+The malicious persistence executable C:\ProgramData\WindowsCache\svchost.exe initiated outbound connections to its command-and-control server at 78.141.196.6 over TCP port 443.
+Port 443 is commonly used for encrypted HTTPS traffic, allowing the attacker to blend C2 traffic with legitimate web traffic and evade firewall and IDS detection.
+
+<img width="1240" height="120" alt="image" src="https://github.com/user-attachments/assets/f50f7de3-4818-4850-974c-5a4c528f5b14" />
+
+🚩 Flag 11 - 443
