@@ -74,11 +74,11 @@ Attackers enumerate network topology to identify lateral movement opportunities 
 
 <h3>KQL Query:</h3>
 
-DeviceProcessEvents
-| where DeviceName == "azuki-sl"
-| where Timestamp between (datetime(2025-11-19) .. datetime(2025-11-20))
-| project Timestamp, FileName, ProcessCommandLine, AccountName
-| order by Timestamp asc
+DeviceProcessEvents <br>
+| where DeviceName == "azuki-sl" <br>
+| where Timestamp between (datetime(2025-11-19) .. datetime(2025-11-20)) <br>
+| project Timestamp, FileName, ProcessCommandLine, AccountName <br>
+| order by Timestamp asc <br>
 
 <img width="1243" height="146" alt="image" src="https://github.com/user-attachments/assets/e8287092-2c02-4eeb-8094-855e788694c5" />
 
