@@ -22,4 +22,27 @@ During the intrusion, the attacker:
 
 
 
+<h2>INCIDENT RESPONSE REPORT</h2>
+
+On November 19th, 2025, Azuki Import/Export experienced a targeted intrusion involving credential compromise, remote access, credential dumping, data theft, and exfiltration to a Discord webhook. The attacker leveraged RDP using stolen credentials, established persistence, disabled security controls, stole internal contract data, and uploaded it via HTTPS. The intrusion lasted several hours and involved anti-forensics and attempted lateral movement.
+
+
+Date of Report: [2025-12-01]
+
+Severity Level:High
+
+Status: Contained
+
+
+
+Flag 1 Initial Access
+
+Remote Desktop Protocol connections leave network traces that identify the source of unauthorised access. Determining the origin helps with threat actor attribution and blocking ongoing attacks.
+
+KQL Query:
+DeviceLogonEvents
+| where DeviceName == "azuki-sl"
+| where Timestamp between (datetime(2025-11-19) .. datetime(2025-11-20))
+| project Timestamp, DeviceName, AccountName, LogonType, ActionType, RemoteIP, RemoteDeviceName
+| order by Timestamp asc
 
