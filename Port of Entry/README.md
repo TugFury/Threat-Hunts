@@ -36,7 +36,7 @@ Status: Contained
 
 
 
-Flag 1 Initial Access
+<h3>Flag 1: Initial Access</h3>
 
 Remote Desktop Protocol connections leave network traces that identify the source of unauthorised access. Determining the origin helps with threat actor attribution and blocking ongoing attacks.
 
