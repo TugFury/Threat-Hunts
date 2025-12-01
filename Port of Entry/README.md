@@ -1,4 +1,5 @@
 
+<img width="1536" height="1024" alt="Port of entry Image" src="https://github.com/user-attachments/assets/fcfd59d8-503c-45b0-8080-0df78134b07b" />
 <h1>🛡️ Port of Entry – RDP Intrusion (2025)</h1>
 Cyber Range Community Threat Hunt Case Study
 
