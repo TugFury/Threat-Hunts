@@ -86,3 +86,5 @@ The attacker executed arp -a, indicating an attempt to enumerate local network h
 
 🚩 Flag 3 - arp -a
 
+<h3>Flag 4: DEFENCE EVASION - Malware Staging Directory</h3>
+
