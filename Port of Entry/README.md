@@ -392,6 +392,8 @@ Near the end of the intrusion, the attacker attempted to laterally move to 10.1.
 🚩 Flag 20 - mstsc.exe
 
 
+<h2>Summary of Findings</h2>
+
 | Flag # | Category                  | Finding                                   |
 | ------ | ------------------------- | ----------------------------------------- |
 | 1      | Initial Access            | `88.97.178.12`                            |
