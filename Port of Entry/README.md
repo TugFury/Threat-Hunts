@@ -383,3 +383,10 @@ This activity occurred near the end of the intrusion after credential dumping an
 <img width="1239" height="171" alt="image" src="https://github.com/user-attachments/assets/c5ecc65d-1e7c-4d99-a229-0ce792b13a76" />
 
 🚩 Flag 19 - 10.1.0.188
+
+<h3>Flag 20: LATERAL MOVEMENT - Remote Access Tool</h3>
+Built-in remote access tools are preferred for lateral movement as they blend with legitimate administrative activity. This technique is harder to detect than custom tools.
+
+Near the end of the intrusion, the attacker attempted to laterally move to 10.1.0.188 using the built-in Windows RDP client mstsc.exe.
+
+🚩 Flag 19 - mstsc.exe
