@@ -125,3 +125,5 @@ The KQL results showed that the attacker added three file extension exclusions t
 🚩 Flag 5 - 3 files.
 
 <h3>Flag 6: DEFENCE EVASION - Temporary Folder Exclusion</h3>
+
+Attackers add folder path exclusions to Windows Defender to prevent scanning of directories used for downloading and executing malicious tools. These exclusions allow malware to run undetected.
