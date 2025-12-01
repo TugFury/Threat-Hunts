@@ -123,3 +123,5 @@ DeviceRegistryEvents <br>
 The KQL results showed that the attacker added three file extension exclusions to Windows Defender, preventing these file types from being scanned
 
 🚩 Flag 5 - 3 files.
+
+<h3>Flag 6: DEFENCE EVASION - Temporary Folder Exclusion</h3>
