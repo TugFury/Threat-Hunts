@@ -358,3 +358,28 @@ DeviceProcessEvents <br>
 | where ProcessCommandLine has_any (".ps1", ".bat", "Invoke-WebRequest", "iwr", "wget") <br>
 | project Timestamp, FileName, ProcessCommandLine <br>
 | order by Timestamp asc <br>
+
+A malicious PowerShell script named wupdate.ps1 was created in a temporary directory shortly after the attacker’s initial RDP access.
+
+<img width="1240" height="141" alt="image" src="https://github.com/user-attachments/assets/ea06fb4f-a891-4a6e-93c2-f9c11c9c6d6a" />
+
+🚩 Flag 18 - wupdate.ps1
+
+<h3>Flag 19: LATERAL MOVEMENT - Secondary Target</h3>
+Lateral movement targets are selected based on their access to sensitive data or network privileges. Identifying these targets reveals attacker objectives.
+
+<h3>KQL Query:</h3>
+
+DeviceProcessEvents <br>
+| where DeviceName == "azuki-sl" <br>
+| where ProcessCommandLine has_any ("cmdkey", "mstsc", "/add:", "/v:") <br>
+| project Timestamp, ProcessCommandLine <br>
+| order by Timestamp asc <br>
+
+DeviceProcessEvents show that the attacker attempted lateral movement by targeting the internal host 10.1.0.188.
+
+This activity occurred near the end of the intrusion after credential dumping and persistence were established. The attacker used commands consistent with lateral movement techniques — such as cmdkey.exe /add: to store credentials and mstsc.exe /v: to initiate an RDP session.
+
+<img width="1239" height="171" alt="image" src="https://github.com/user-attachments/assets/c5ecc65d-1e7c-4d99-a229-0ce792b13a76" />
+
+🚩 Flag 19 - 10.1.0.188
