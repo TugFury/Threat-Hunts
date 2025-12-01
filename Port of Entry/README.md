@@ -197,3 +197,8 @@ Although named after the legitimate Windows system process svchost.exe, this fil
 <img width="1240" height="137" alt="image" src="https://github.com/user-attachments/assets/305e4244-0cd3-4041-b8b4-a13240ede16b" />
 
 🚩 Flag 9 - C:\ProgramData\WindowsCache\svchost.exe
+
+<h3>Flag 10: COMMAND & CONTROL - C2 Server Address</h3>
+
+Command and control infrastructure allows attackers to remotely control compromised systems. Identifying C2 servers enables network blocking and infrastructure tracking.
+
