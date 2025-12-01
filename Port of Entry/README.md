@@ -202,3 +202,20 @@ Although named after the legitimate Windows system process svchost.exe, this fil
 
 Command and control infrastructure allows attackers to remotely control compromised systems. Identifying C2 servers enables network blocking and infrastructure tracking.
 
+<h3>KQL Query:</h3>
+
+DeviceNetworkEvents <br> 
+| where DeviceName == "azuki-sl" <br>
+| where Timestamp between (datetime(2025-11-19) .. datetime(2025-11-20)) <br>
+| where InitiatingProcessFileName =~ "svchost.exe" <br>
+| project Timestamp, RemoteIP, InitiatingProcessFileName, InitiatingProcessFolderPath, InitiatingProcessCommandLine <br>
+| order by Timestamp asc <br>
+
+Using DeviceNetworkEvents, ive identified that this fake svchost.exe initiated outbound connections to the external IP: 78.141.196.6
+
+<img width="1240" height="164" alt="image" src="https://github.com/user-attachments/assets/1e323e71-cdc3-41ab-8479-58efc2c306e5" />
+
+🚩 Flag 10 - 78.141.196.6
+
+
+
