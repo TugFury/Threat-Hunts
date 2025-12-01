@@ -127,3 +127,12 @@ The KQL results showed that the attacker added three file extension exclusions t
 <h3>Flag 6: DEFENCE EVASION - Temporary Folder Exclusion</h3>
 
 Attackers add folder path exclusions to Windows Defender to prevent scanning of directories used for downloading and executing malicious tools. These exclusions allow malware to run undetected.
+
+DeviceRegistryEvents
+| where DeviceName == "azuki-sl"
+| where Timestamp between (datetime(2025-11-19) .. datetime(2025-11-20))
+| where RegistryKey has @"Windows Defender\Exclusions\Paths"
+| project Timestamp, RegistryValueName, RegistryValueData, ActionType
+| order by Timestamp asc
+
+<img width="1240" height="168" alt="image" src="https://github.com/user-attachments/assets/80240e9f-789b-49bc-8819-67ef77f18113" />
