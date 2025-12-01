@@ -119,3 +119,7 @@ DeviceRegistryEvents <br>
 | order by Timestamp asc <br>
 
 <img width="1241" height="139" alt="image" src="https://github.com/user-attachments/assets/ecbb8a66-9239-4eb8-a6c7-cbf89633df7f" />
+
+The KQL results showed that the attacker added three file extension exclusions to Windows Defender, preventing these file types from being scanned
+
+🚩 Flag 5 - 3 files.
