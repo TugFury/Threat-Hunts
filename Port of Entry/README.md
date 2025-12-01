@@ -41,6 +41,7 @@ Status: Contained
 Remote Desktop Protocol connections leave network traces that identify the source of unauthorised access. Determining the origin helps with threat actor attribution and blocking ongoing attacks.
 
 <h3>KQL Query:</h3>
+
 I decided to check th edevice logon events during the time range of the suspected incident.
 DeviceLogonEvents <br>
 | where DeviceName == "azuki-sl" <br>
