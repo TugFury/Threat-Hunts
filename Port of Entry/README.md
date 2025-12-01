@@ -41,7 +41,7 @@ Status: Contained
 Remote Desktop Protocol connections leave network traces that identify the source of unauthorised access. Determining the origin helps with threat actor attribution and blocking ongoing attacks.
 
 <h3>KQL Query:</h3>
-
+I decided to check th edevice logon events during the time range of the suspected incident.
 DeviceLogonEvents <br>
 | where DeviceName == "azuki-sl" <br>
 | where Timestamp between (datetime(2025-11-19) .. datetime(2025-11-20)) <br>
@@ -51,3 +51,6 @@ DeviceLogonEvents <br>
 
 <img width="1243" height="440" alt="Flag 1 Return" src="https://github.com/user-attachments/assets/da03a46f-6398-42ea-ac45-97c3a16ca7b9" />
 
+The query results showed a suspicious sequence of a LogonFailure followed by a successful logon from the external IP address 88.97.178.12.
+
+Flag 1 - 88.97.178.12
