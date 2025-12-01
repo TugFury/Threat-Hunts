@@ -456,3 +456,8 @@ T1567.002 – Exfiltration to cloud service via Discord webhook.
 
 <h3>Impact / Anti-Forensics</h3>
 T1070.001 – Event log clearing using wevtutil.exe.
+
+<h2>Final Summary</h2>
+On November 19th, 2025, Azuki Import/Export was compromised through stolen RDP credentials, granting the attacker full interactive access to the IT admin workstation (AZUKI-SL). Once inside, the adversary executed a malicious PowerShell script, created a concealed staging directory, disabled Windows Defender protections, and deployed credential-dumping tools to harvest LSASS secrets. The attacker compressed sensitive contract and pricing data into export-data.zip and exfiltrated it to a Discord webhook via HTTPS.
+
+that attacker established persistence using a scheduled task, created a hidden local administrator account, cleared Security event logs to obstruct forensic recovery, and attempted lateral movement to 10.1.0.188 using mstsc.exe. The intrusion was contained, and malicious activity ceased shortly afterward. This attack demonstrates a full adversary kill chain leveraging living-off-the-land binaries, credential dumping, stealthy persistence, and cloud-based exfiltration.
