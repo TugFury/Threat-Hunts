@@ -63,3 +63,6 @@ Identifying which credentials were compromised determines the scope of unauthori
 
 <img width="1243" height="201" alt="image" src="https://github.com/user-attachments/assets/faded648-398d-4784-b43f-692011aaa51e" />
 
+The external IP authenticated using the kenji.sato account, confirming it as the compromised credential.
+
+🚩 Flag 2 - kenji.sato
