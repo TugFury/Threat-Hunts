@@ -217,5 +217,15 @@ Using DeviceNetworkEvents, ive identified that this fake svchost.exe initiated o
 
 🚩 Flag 10 - 78.141.196.6
 
+<h3>Flag 11: COMMAND & CONTROL - C2 Communication Port</h3>
 
+C2 communication ports can indicate the framework or protocol used. This information supports network detection rules and threat intelligence correlation.
 
+<h3>KQL Query:</h3>
+
+DeviceNetworkEvents <br> 
+| where DeviceName == "azuki-sl" <br> 
+| where RemoteIP == "78.141.196.6" <br> 
+| project Timestamp, RemoteIP, RemotePort, InitiatingProcessFileName, InitiatingProcessCommandLine <br> 
+| order by Timestamp asc <br> 
+ 
