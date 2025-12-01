@@ -88,3 +88,6 @@ The attacker executed arp -a, indicating an attempt to enumerate local network h
 
 <h3>Flag 4: DEFENCE EVASION - Malware Staging Directory</h3>
 
+Attackers establish staging locations to organise tools and stolen data. Identifying these directories reveals the scope of compromise and helps locate additional malicious artefacts.
+
+
