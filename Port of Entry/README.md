@@ -390,3 +390,27 @@ Built-in remote access tools are preferred for lateral movement as they blend wi
 Near the end of the intrusion, the attacker attempted to laterally move to 10.1.0.188 using the built-in Windows RDP client mstsc.exe.
 
 🚩 Flag 20 - mstsc.exe
+
+
+| Flag # | Category                  | Finding                                   |
+| ------ | ------------------------- | ----------------------------------------- |
+| 1      | Initial Access            | `88.97.178.12`                            |
+| 2      | Compromised Account       | `kenji.sato`                              |
+| 3      | Discovery                 | `arp -a`                                  |
+| 4      | Staging Directory         | `C:\ProgramData\WindowsCache`             |
+| 5      | File Extension Exclusions | `3`                                       |
+| 6      | Folder Exclusion          | `C:\Users\KENJI~1.SAT\AppData\Local\Temp` |
+| 7      | LOLBIN Download Utility   | `certutil.exe`                            |
+| 8      | Persistence Task Name     | `Windows Update Check`                    |
+| 9      | Persistence Task Target   | `C:\ProgramData\WindowsCache\svchost.exe` |
+| 10     | C2 Server                 | `78.141.196.6`                            |
+| 11     | C2 Port                   | `443`                                     |
+| 12     | Credential Theft Tool     | `mm.exe`                                  |
+| 13     | Memory Extraction Module  | `sekurlsa::logonpasswords`                |
+| 14     | Data Archive              | `export-data.zip`                         |
+| 15     | Exfiltration Channel      | `Discord`                                 |
+| 16     | Log Cleared               | `Security`                                |
+| 17     | Persistence Account       | `support`                                 |
+| 18     | Malicious Script          | `wupdate.ps1`                             |
+| 19     | Lateral Movement Target   | `10.1.0.188`                              |
+| 20     | Lateral Movement Tool     | `mstsc.exe`                               |
