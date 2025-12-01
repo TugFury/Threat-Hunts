@@ -66,3 +66,6 @@ Identifying which credentials were compromised determines the scope of unauthori
 The external IP authenticated using the kenji.sato account, confirming it as the compromised credential.
 
 🚩 Flag 2 - kenji.sato
+
+
+<h3>Flag 3: DISCOVERY - Network Reconnaissance</h3>
