@@ -235,3 +235,19 @@ Port 443 is commonly used for encrypted HTTPS traffic, allowing the attacker to 
 <img width="1240" height="120" alt="image" src="https://github.com/user-attachments/assets/f50f7de3-4818-4850-974c-5a4c528f5b14" />
 
 🚩 Flag 11 - 443
+
+<h3>Flag 12: CREDENTIAL ACCESS - Credential Theft Tool</h3>
+Credential dumping tools extract authentication secrets from system memory. These tools are typically renamed to avoid signature-based detection.
+
+<h3>KQL Query:</h3>
+DeviceProcessEvents <br> 
+| where DeviceName == "azuki-sl" <br> 
+| where ProcessCommandLine has_any ("lsass", "lsass.exe", "comsvcs.dll", "MiniDump", "sekurlsa") <br> 
+| project Timestamp, FileName, ProcessCommandLine <br> 
+| order by Timestamp asc <br>  
+
+A suspicious executable named mm.exe was downloaded into the attacker’s staging directory at C:\ProgramData\WindowsCache.
+
+<img width="1240" height="117" alt="image" src="https://github.com/user-attachments/assets/95baeff9-6db5-4002-98c5-2f20a86be66c" />
+
+🚩 Flag 12 - mm.exe
