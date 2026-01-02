@@ -28,3 +28,6 @@ By querying successful logons and remote access activity on the Azuki  VM, I ide
 
 🚩 Flag 1 - 159.26.106.98
 
+<h3>FLAG 2: LATERAL MOVEMENT - Compromised Device</h3>
+
+Lateral movement targets are selected based on their access to sensitive data or network privileges. File servers are high-value targets containing business-critical information.
