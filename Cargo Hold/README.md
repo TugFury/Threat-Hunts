@@ -31,3 +31,6 @@ By querying successful logons and remote access activity on the Azuki  VM, I ide
 <h3>FLAG 2: LATERAL MOVEMENT - Compromised Device</h3>
 
 Lateral movement targets are selected based on their access to sensitive data or network privileges. File servers are high-value targets containing business-critical information.
+
+
+<img width="1865" height="310" alt="image" src="https://github.com/user-attachments/assets/d615f7b7-fc9c-4ba7-a152-97fe24b2e4a5" />
