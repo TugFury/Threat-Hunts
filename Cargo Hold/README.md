@@ -21,9 +21,10 @@ DeviceLogonEvents <br>
 | project TimeGenerated, DeviceName, AccountName, RemoteIP, LogonType <br>
 | order by TimeGenerated asc <br>
 
+<img width="1865" height="301" alt="image" src="https://github.com/user-attachments/assets/fc30ecb1-8f22-4e8d-b416-39515e064d6b" />
 
 
-By querying successful logons and remote access activity on the Azuki beachhead VM, I identified a later successful connection back to the host from the external IP: 159.26.106.98
+By querying successful logons and remote access activity on the Azuki  VM, I identified a later successful connection back to the host from the external IP: 159.26.106.98
 
 🚩 Flag 1 - 159.26.106.98
 
