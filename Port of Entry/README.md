@@ -34,7 +34,8 @@ Severity Level:High
 
 Status: Contained
 
-
+<h3>Executive Summary</h3>
+<p>Azuki Import/Export experienced a targeted RDP-based intrusion resulting in credential theft, data exfiltration, and attempted lateral movement. The attacker leveraged stolen credentials, living-off-the-land binaries, and cloud-based exfiltration to evade detection. The incident was detected, investigated, and contained, with no further malicious activity observed.</p>
 
 <h3>Flag 1: Initial Access</h3>
 
